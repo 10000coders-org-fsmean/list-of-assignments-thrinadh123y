@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <title>Document</title>
+</head>
+<body>
+    <form>
+        <div class="form-group">
+            <label for="fname">First Name</label>
+            <input type="text" class="form-control" id="fname" aria-describedby="emailHelp" placeholder="First name">
+            </div>
+
+            <div class="form-group">
+                <label for="lname">Email</label>
+                <input type="text" class="form-control" id="email" aria-describedby="emailHelp" placeholder="tommy123@gmail.com">
+                </div>
+
+                <div class="checkbox">
+                    <label for="checkbox">Select</label>
+                        <label for="ChooseOption"><input type="checkbox" value="HTML" class="mycheckbox">HTML</label>
+                        <label for="ChooseOption"><input type="checkbox" value="JAVASCRIPT" class="mycheckbox">JAVA SCRIPT</label>
+                </div>
+
+                <div class="radio">
+                        <label for="Gender">Gender :
+                        <input type="radio" name="optradio" class="myradio" value="Male">Male</label>
+                        <input type="radio" name="optradio" class="myradio" value="Female">FeMale</label>
+                </div>
+                <button type="button" class="btn btn-primary" onclick="addUser()">Submit</button>
+    </form>
+
+         <table class="table" style="margin-top: 10px">
+            <thead class="thead-dark">
+              <tr>
+                <th scope="col">FIRST NAME</th>
+                <th scope="col">EMAIL</th>
+                <th scope="col">SELECTED</th>
+                <th scope="col">GENDER</th>
+              </tr>
+            </thead>
+            <tbody id="myTable">
+           
+            </tbody>
+          </table>
+      <script>
+          var users = []
+          function addUser(){
+              
+              var obj={
+                  fname:"",
+                  email:"",
+                  ChooseOption:[],
+                  Gender:"",
+                 
+              }
+              fetchinfo(obj)
+            
+          }
+          function fetchinfo(obj){
+            for(a in obj){
+                if(a != "ChooseOption" && a != "Gender" ){
+                  obj[a] = document.getElementById(a).value
+                }
+                else if(a == "ChooseOption"){
+                    var checkboxValues = document.getElementsByClassName('mycheckbox')
+                    console.log(checkboxValues)
+                    for (i=0;i<checkboxValues.length;i++){
+                        if(checkboxValues[i].checked){
+                            obj.ChooseOption.push(checkboxValues[i].value)
+                        }
+                    
+                    }
+                }else if(a == "Gender"){
+                    var genderValues = document.getElementsByName('optradio')
+                    console.log(genderValues)
+                    for(i=0;i<genderValues.length;i++){
+                        if(genderValues[i].checked){
+                            obj.Gender = genderValues[i].value
+                        }
+                    }
+                }
+            }
+            console.log(obj)
+            users.push(obj)
+            display(users)
+          }
+          function display(users){
+              for(i=0;i<users.length;i++){
+                  document.getElementById('myTable').innerHTML=''
+                  var tr=document.createElement('tr')
+                  for(a in users[i]){
+                      var td=document.createElement('td')
+                      td.innerHTML=users[i][a]
+                      tr.appendChild(td)
+                  }
+                  document.getElementById('myTable').appendChild(tr)
+              }
+          }
+      </script>    
+</body>
+</html>

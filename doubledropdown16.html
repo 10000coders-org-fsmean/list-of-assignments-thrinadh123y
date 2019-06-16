@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <title>Document</title>
+</head>
+<body>
+        <div class="form-group">
+                <label for="state">Select State:</label>
+                <select class="form-control" id="state" onchange="showstatedetails()">
+                  
+                </select>
+         </div>
+
+         <div class="form-group">
+                <label for="District">Select District:</label>
+                <select class="form-control" id="district" >
+                  
+                </select>
+         </div>
+
+         <button id="submit" onclick="Alldata()">submit</button>
+         <div id="demo"></div>
+    <script>
+        var states = [
+    {
+        "statenames":"Maharashtra",
+        "district":[
+            {
+                "districtname":"Aurangabad"
+            },
+            {
+                "districtname":"Mumbai City"
+            },
+            {
+                "districtname":"Bhandara"
+            },
+            {
+                "districtname":"Ratnagiri"
+            },
+            {
+                "districtname":"Pune"
+            },
+            {
+                "districtname":"Solapur"
+            }
+    ]
+    },
+    {
+        "statenames":"Tamil Nadu",
+        "district":[
+            {
+                "districtname":"Chennai"
+            },
+            {
+                "districtname":"Coimbatore"
+            },
+            {
+                "districtname":"Madurai"
+            },
+            {
+                "districtname":"Vellore"
+            },
+            {
+                "districtname":"Thanjavur"
+            },
+            {
+                "districtname":"Erode"
+            }
+    ]
+    
+    },
+    {
+        "statenames":"Telangana",
+        "district":[
+            {
+                "districtname":"Adilabad"
+            },
+            {
+                "districtname":"Hyderabad"
+            },
+            {
+                "districtname":"Nalgonda"
+            },
+            {
+                "districtname":"Medak"
+            },
+            {
+                "districtname":"Mahabubabad"
+            },
+            {
+                "districtname":"Gadwal"
+            }
+    ]
+    
+    },
+    {
+        "statenames":"Andhra Pradesh",
+        "district":[
+            {
+                "districtname":"Guntur",
+            },
+            {
+                "districtname":"Krishna",
+            },
+            {
+                "districtname":"East Godavari",
+            },
+            {
+                "districtname":"West Godavari"
+            },
+            {
+                "districtname":"Visakhapatnam"
+            },
+            {
+                "districtname":"Kadapa"
+            }
+    ]
+    
+    }
+
+    
+]
+        for(var i=0;i<states.length;i++)
+        {
+            var options = document.createElement('option');
+            options.innerHTML = states[i].statenames;
+            options.setAttribute('value',i);
+            document.getElementById('state').appendChild(options)
+           
+        }
+        function showstatedetails(){
+            document.getElementById('demo').innerHTML = ""
+            index = document.getElementById('state').value
+            console.log(index)
+            document.getElementById('district').innerHTML=""
+            for(var j=0;j<states[index].district.length;j++)
+        {
+            var option = document.createElement('option');
+            option.innerHTML = states[index].district[j].districtname;
+            option.setAttribute('value',j);
+            document.getElementById('district').appendChild(option)
+
+        }
+            
+        }
+        function Alldata(){
+            var selectedobj = states[document.getElementById('state').value]
+            console.log(selectedobj)
+            var obj = {
+                statenames:selectedobj.statenames,
+                districtname:selectedobj.district[document.getElementById('district').value].districtname
+            }
+            document.getElementById('demo').innerHTML = obj.statenames+"<br>"+obj.districtname
+        }
+    </script>
+</body>
+</html>

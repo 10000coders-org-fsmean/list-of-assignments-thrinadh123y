@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <script src="project_data.js"></script>
+    <title>Document</title>
+    <style>
+        #districts li:hover {
+    width: 150px;
+    background: lightgray;
+    color:black;
+        }
+
+    </style>
+</head>
+<body>
+    <ul id="districts">
+        
+    </ul><hr>
+    <ul id="places">
+     </ul>       
+    <script>
+         var districts=[
+        {
+            "name":"Guntur",
+            "famousplaces":["Mirchi Yard","NTR statue","Crazy World","N.T.R. Manasa Sarovaram"]
+        },
+        {
+            "name":"Krishna",
+            "famousplaces":["Sri Durga Malleswara Swamy Varla Devasthanam","Prakasam Barrage","Manginapudi Beach","Rajiv Gandhi Park"]
+        },
+        {
+            "name":"Visakhapatnam",
+            "famousplaces":["Varaha Lakshmi Narasimha temple, Simhachalam","Kailasagiri","Rushikonda Beach","Dolphin's Nose"]
+        }
+    ]
+        for(var i=0;i<districts.length;i++){
+            var li = document.createElement('li')
+            li.innerHTML = districts[i].name
+            li.setAttribute('onclick','famous('+i+')')
+            document.getElementById('districts').appendChild(li)
+        }
+        function famous(i){
+            document.getElementById('places').innerHTML = ""
+            console.log(districts[i])
+            var objdetails =  districts[i]
+            for(var j=0;j<objdetails.famousplaces.length;j++)
+            {
+                var li1 = document.createElement('li')
+                li1.innerHTML = objdetails.famousplaces[j]
+                document.getElementById('places').appendChild(li1)
+            }
+        }
+       
+    </script>
+</body>
+</html>

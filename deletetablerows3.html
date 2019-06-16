@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <title>Document</title>
+</head>
+<body>
+    <table class="table" id="table1">
+        <thead class="thead-dark">
+          <tr>
+            <th scope="col">Id</th>
+            <th scope="col">First Name</th>
+            <th scope="col">Lastname</th>
+            <th scope="col">City</th>
+            </tr>
+        </thead>
+        <tbody id="mytable">
+          
+        </tbody>
+      </table>
+      <button type="button" class="btn btn-primary" onclick="deletefirst()">Delete First Object</button>
+<button type="button" class="btn btn-secondary" onclick="deletelast()">Delete last object</button>
+<input type="number" id="number">
+<button type="button" class="btn btn-success" onclick="deletespecific()">Delete specific object</button>
+<button type="button" class="btn btn-danger" onclick="deleteodd()">Delete odd rows</button>
+<button type="button" class="btn btn-warning" onclick="deleteeven()">Delete even rows</button>
+<button type="button" class="btn btn-dark" onclick="changebg()">Add bgcolor</button>
+
+      <script>
+        var data=[
+            {
+                "id":"1",
+                "fname":"thrinadh",
+                "lname":"yoga",
+                "city":"guntur",
+            },
+            {
+                "id":"2",
+                "fname":"sai",
+                "lname":"yoga",
+                "city":"hyd",
+            },
+            {
+                "id":"3",
+                "fname":"murali",
+                "lname":"krishna",
+                "city":"banglore",
+            },
+            {
+                "id":"4",
+                "fname":"pavan",
+                "lname":"kumar",
+                "city":"chennai",
+            },
+            {
+                "id":"5",
+                "fname":"chinni",
+                "lname":"baby",
+                "city":"vizag",
+            },
+            {
+                "id":"6",
+                "fname":"saran",
+                "lname":"gopal",
+                "city":"banglore",
+            },
+            {
+                "id":"7",
+                "fname":"gopi",
+                "lname":"krishna",
+                "city":"puna",
+            },
+            {
+                "id":"8",
+                "fname":"mahesh",
+                "lname":"babu",
+                "city":"hyderabad",
+            },
+            {
+                "id":"9",
+                "fname":"vamsi",
+                "lname":"krishna",
+                "city":"chennai",
+            },
+            {
+                "id":"10",
+                "fname":"yoga",
+                "lname":"chinni",
+                "city":"hyderabad",
+            },
+        ]
+        function displaydata(){
+            document.getElementById('mytable').innerHTML=''
+            for(i=0;i<data.length;i++){
+            var tr=document.createElement('tr')
+           for(a in data[i]){
+            var td=document.createElement('td')
+            td.innerHTML=data[i][a]
+            tr.appendChild(td)
+           }
+           document.getElementById('mytable').appendChild(tr)
+        }
+        }
+        displaydata();
+        function changebg(){
+        var tb=document.getElementById('table1')
+        tb.setAttribute('class','table table-striped table-dark')
+        }
+        function deletefirst(){
+            data.shift();
+            displaydata();
+        }
+        function deletelast(){
+            data.pop();
+            displaydata();
+        }
+        function deletespecific(){
+            var num=document.getElementById('number').value
+            var num1=num-1;
+            data.splice(num1,1);
+            displaydata()
+        }
+        function deleteodd(){
+            for (var i = 0; i < data.length; i++) {
+        if(!(data[i]%2==0)){
+            data.splice(i, 1);
+        }
+    }
+        displaydata();
+        }
+        function deleteeven(){
+            for (var i = 0; i < data.length; i++) {
+        if(!(data[i]%2==0)){
+            var j=i+1;
+            data.splice(j, 1);
+        }
+    }
+    displaydata()
+        }
+      </script>
+</body>
+</html>

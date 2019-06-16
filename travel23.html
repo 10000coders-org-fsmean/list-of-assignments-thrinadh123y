@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+    <title>Document</title>
+</head>
+<body>
+        <div class="form-group">
+                <label for="from">Select FROM:</label>
+                <select class="form-control" id="from">
+                  
+                </select>
+                <label for="to">Select TO:</label>
+                <select class="form-control" id="to">
+                  
+                </select>
+        </div>
+    <button type="button" onclick="show()">FIND</button>
+    <div id="main"></div>
+    <script>
+        var data=[{
+            "from":"guntur",
+            "to":"vizag",
+            "description":"rout found from guntur to vizag"
+        },
+        {
+            "from":"hyderabad",
+            "to":"banglore",
+            "description":"rout found from hyderabad to banglore"
+        },
+        {
+            "from":"guntur",
+            "to":"hyderabad",
+            "description":"rout found from guntur to hyderabad"
+        },
+        {
+            "from":"banglore",
+            "to":"guntur",
+            "description":"rout found from banglore to guntur"
+        }]
+        for(i = 0; i<data.length;i++){
+            var options = document.createElement('option');
+            options.innerHTML = data[i].from;
+            options.setAttribute('value', i);
+            document.getElementById('from').appendChild(options)
+        }
+        for(i = 0; i<data.length;i++){
+            var options = document.createElement('option');
+            options.innerHTML = data[i].to;
+            options.setAttribute('value', i);
+            document.getElementById('to').appendChild(options)
+        }
+        function show(){
+            var from1=document.getElementById('from').value;
+            var to1=document.getElementById('to').value;
+            for(var j=0;j<data.length;j++){
+             var fromplace=data[from1].from;
+             var toplace=data[to1].to;
+             if((fromplace==data[j].from) && (toplace==data[j].to)){
+             document.getElementById('main').innerHTML=data[from1].description;
+             }
+            }
+                    }
+    </script>
+</body>
+</html>

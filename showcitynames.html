@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <title>Document</title>
+</head>
+<body>
+    <div id="main"></div>
+    <div id="data"></div>
+    <script>
+       var button=document.createElement('button')
+       button.innerHTML='SHOW CITY NAMES';
+       button.setAttribute('class','btn btn-secondary');
+       button.style.padding='10px 300px';
+       button.style.marginLeft='230px';
+       button.setAttribute('onclick','getdata()')
+      // button.style.paddingRight='40px';
+       document.getElementById('main').appendChild(button);
+
+       function getdata(){
+           document.getElementById('data').innerHTML=""
+           var data=["Guntur","	Visakhapatnam","Vijayawada","Rajahmundry","Tirupati","Anantapur","Vizianagaram","Ongole","Eluru","Kadapa"]
+           var ol=document.createElement('ol')
+           ol.style.marginLeft="500px";
+           ol.style.padding="40px"
+           for(i=0;i<data.length;i++){
+               var li=document.createElement('li')
+               li.innerHTML=data[i];
+               ol.appendChild(li)
+           }
+           document.getElementById('data').appendChild(ol)
+       }
+    </script>
+</body>
+</html>

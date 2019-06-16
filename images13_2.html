@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+  #row img {
+    width: 24%;
+    height: 200px;
+    margin-right: 9px;
+}
+</style>
+</head>
+<body>
+<div id="row">
+    <img src="sam1.jpg" alt="Nature" onclick="myFunction(this);">
+    <img src="sam2.jpg" alt="Snow" onclick="myFunction(this);">
+    <img src="sam3.jpg" alt="Mountains"  onclick="myFunction(this);">
+    <img src="sam4.jpg" alt="Lights" onclick="myFunction(this);">
+  </div>
+
+<div class="container">
+  <img id="expandedImg" style="width:100%;height: 350px;">
+</div>
+
+<script>
+function myFunction(imgs) {
+  var expandImg = document.getElementById("expandedImg");
+  expandImg.src = imgs.src;
+  expandImg.parentElement.style.display = "block";
+}
+</script>
+
+</body>
+</html>
